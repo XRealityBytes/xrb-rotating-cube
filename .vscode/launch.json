@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Cube: Chrome (start dev server)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://127.0.0.1:5173",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "preLaunchTask": "Dev: start server"
+    },
+    {
+      "name": "Cube: Edge (start dev server)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://127.0.0.1:5173",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "preLaunchTask": "Dev: start server"
+    },
+    {
+      "name": "Cube: Chrome (production preview)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://127.0.0.1:4173",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "preLaunchTask": "Preview production build"
+    }
+  ]
+}

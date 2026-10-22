@@ -1,0 +1,26 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+*.log
+
+# Account-specific deployment data and local environment
+.vercel/
+.env
+.env.*
+!.env.example
+.npmrc.local
+
+# Operating system / editor state
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*.local.json
+
+# Agent-local settings and generated delivery archives
+.claude/settings.local.json
+.codex/auth.json
+*.zip

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090c12" />
+    <meta
+      name="description"
+      content="A small experiment in form, light, and motion. An interactive cube that transforms into a sphere by XRealityBytes."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Shape Shift — XRealityBytes</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="XRealityBytes rotating cube home">
+          <span class="brand-symbol" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="m16 3 12 7v13l-12 7L4 23V10L16 3Z" />
+              <path d="m4 10 12 7 12-7M16 17v13M10 6.5l12 7v6.5" />
+            </svg>
+          </span>
+          <span
+            >XRealityBytes<span class="brand-divider">/</span
+            ><span class="brand-section">playground</span></span
+          >
+        </a>
+        <span class="edition">EXPERIMENT <span>001</span></span>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow"><span></span> FORM · LIGHT · MOTION</p>
+            <h1 id="page-title">Shape shift<span>.</span></h1>
+            <p class="intro-description">
+              From cube to sphere and back again, in a continuous cycle of colour and light.
+            </p>
+          </div>
+          <div class="specimen-mark" aria-hidden="true">
+            <span>OBJECT STUDY</span>
+            <strong>01 / ∞</strong>
+          </div>
+        </section>
+
+        <section class="playground" aria-label="Interactive rotating cube">
+          <div id="scene-viewport" class="scene-viewport">
+            <div class="scene-grid" aria-hidden="true"></div>
+            <div class="scene-orbit" aria-hidden="true"></div>
+            <div class="scene-label scene-label-top" aria-hidden="true">
+              <span class="crosshair">+</span><span>CUBE ⇄ SPHERE</span>
+            </div>
+            <div class="scene-label scene-label-bottom" aria-hidden="true">
+              <span>FORM STUDY</span><span class="label-line"></span
+              ><span>ONE CONTINUOUS MORPH</span>
+            </div>
+            <div id="scene-message" class="scene-message" role="status">
+              <span class="loading-dot" aria-hidden="true"></span>
+              <p>Preparing the scene…</p>
+            </div>
+          </div>
+
+          <div class="controls">
+            <div class="playback-controls">
+              <button id="toggle-rotation" class="button button-primary" type="button" disabled>
+                <svg class="pause-icon" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M6 4v12M14 4v12" />
+                </svg>
+                <svg class="play-icon" viewBox="0 0 20 20" aria-hidden="true" hidden>
+                  <path d="m6 3 11 7-11 7V3Z" />
+                </svg>
+                <span id="toggle-label">Pause</span>
+              </button>
+              <button id="reset-rotation" class="button button-secondary" type="button" disabled>
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3.5 8a6.7 6.7 0 1 1 .8 6.1M3.5 8V3M3.5 8h5" />
+                </svg>
+                Reset
+              </button>
+            </div>
+            <div class="speed-control">
+              <label for="rotation-speed">Animation speed</label>
+              <input
+                id="rotation-speed"
+                type="range"
+                min="0.25"
+                max="2"
+                step="0.25"
+                value="1"
+                disabled
+              />
+              <output id="speed-value" for="rotation-speed">1.00×</output>
+            </div>
+            <div
+              id="motion-status"
+              class="motion-status"
+              data-state="loading"
+              role="status"
+              aria-live="polite"
+            >
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="motion-status-label">Loading</span>
+            </div>
+          </div>
+        </section>
+        <p id="motion-note" class="motion-note" hidden>
+          Animation starts paused to respect your reduced-motion preference. Select Resume to play.
+        </p>
+        <noscript>
+          <p class="noscript-message">Enable JavaScript to view and control the 3D cube.</p>
+        </noscript>
+      </main>
+
+      <footer class="site-footer">
+        <span>Made to be explored.</span>
+        <span class="footer-wordmark">XRB <span>© 2026</span></span>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["ci"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Dev: start server",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "options": { "env": { "NO_COLOR": "1" } },
+      "problemMatcher": {
+        "owner": "vite",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+): (error|warning): (.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "\\bVITE\\b.*ready in",
+          "endsPattern": "Local:\\s+http://(?:127\\.0\\.0\\.1|localhost):5173(?:/|\\s|$)"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": false,
+        "clear": true
+      },
+      "runOptions": { "instanceLimit": 1 }
+    },
+    {
+      "label": "Dev: start and open browser",
+      "type": "npm",
+      "script": "dev:open",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Check: TypeScript",
+      "type": "npm",
+      "script": "typecheck",
+      "problemMatcher": "$tsc",
+      "group": "test"
+    },
+    {
+      "label": "Check: ESLint",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": "$eslint-stylish",
+      "group": "test"
+    },
+    {
+      "label": "Check: formatting",
+      "type": "npm",
+      "script": "format:check",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Check: all",
+      "dependsOn": ["Check: TypeScript", "Check: ESLint", "Check: formatting"],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": { "kind": "test", "isDefault": true }
+    },
+    {
+      "label": "Format source and configuration",
+      "type": "npm",
+      "script": "format",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build production",
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": "$tsc",
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Preview production build",
+      "type": "npm",
+      "script": "preview",
+      "dependsOn": "Build production",
+      "isBackground": true,
+      "options": { "env": { "NO_COLOR": "1" } },
+      "problemMatcher": {
+        "owner": "vite-preview",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+): (error|warning): (.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^>.*preview",
+          "endsPattern": "Local:\\s+http://(?:127\\.0\\.0\\.1|localhost):4173(?:/|\\s|$)"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": false,
+        "clear": true
+      },
+      "runOptions": { "instanceLimit": 1 }
+    },
+    {
+      "label": "Vercel: sign in",
+      "type": "npm",
+      "script": "vercel:login",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "focus": true, "panel": "dedicated" }
+    },
+    {
+      "label": "Vercel: create or link project",
+      "type": "npm",
+      "script": "vercel:link",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "focus": true, "panel": "dedicated" }
+    },
+    {
+      "label": "Vercel: connect Git repository",
+      "type": "npm",
+      "script": "vercel:git",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "focus": true, "panel": "dedicated" }
+    },
+    {
+      "label": "Deploy: Vercel PREVIEW",
+      "type": "npm",
+      "script": "deploy:preview",
+      "dependsOn": "Check: all",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "focus": true, "panel": "dedicated" }
+    },
+    {
+      "label": "Deploy: Vercel PRODUCTION",
+      "type": "npm",
+      "script": "deploy:production",
+      "dependsOn": "Check: all",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "focus": true, "panel": "dedicated" }
+    }
+  ]
+}
