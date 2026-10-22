@@ -38,34 +38,24 @@ TypeScript peer range; the newer TypeScript 7 release was not combined with that
 incompatible dependency. Vercel CLI 65.1.0 is downloaded on demand by deployment
 scripts and is not needed for normal development.
 
-## GitHub: public publication requested
+## GitHub: public and source pushed
 
 Repository: <https://github.com/XRealityBytes/xrb-rotating-cube>
 
-The repository was created earlier under **XRealityBytes**. On 22 October 2026,
-the user authorised publishing it publicly and pushing the current source. The
-source tree is being prepared as a local `main` branch with this URL configured
-as `origin`. The downloadable ZIP intentionally excludes `.git`.
+On 22 October 2026, **Public** visibility was verified in GitHub and the complete
+source was pushed to `main`. The initial source commit was
+`7f038851a7ed8ba18e4d5afdb9c1a81ddbb95e69`. The local `main` branch tracks
+`origin/main`, and `origin` points to the repository above.
 
-To populate this existing empty repository from the extracted ZIP, run the
-following from the project folder. Git must have your own author name and email
-configured. Install GitHub CLI from <https://cli.github.com/> if needed.
+Clone the public repository with:
 
 ```bash
-gh auth login
-gh auth setup-git
-git init -b main
-git add .
-git commit -m "Initial rotating cube starter"
-git remote add origin https://github.com/XRealityBytes/xrb-rotating-cube.git
-git push -u origin main
-gh repo view XRealityBytes/xrb-rotating-cube --json nameWithOwner,isPrivate,url
+git clone https://github.com/XRealityBytes/xrb-rotating-cube.git
 ```
 
-These commands assume an extracted ZIP without `.git`. For an existing checkout,
-inspect `git status` and `git remote -v` and skip already completed initialization
-steps. Do not force-push if the remote has acquired commits. Verify that the
-repository reports `isPrivate: false` after publication.
+The downloadable ZIP intentionally excludes `.git`. Credentials, `.env` files,
+dependencies, generated build output, and account-local deployment state were
+excluded from the commit.
 
 ## Vercel: configured; remote project outstanding
 
